@@ -1,18 +1,8 @@
 
-import entity.Author;
 import entity.Book;
 import entity.History;
 import entity.Reader;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.Arrays;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import managers.BookManager;
 import managers.DataManager;
 import managers.HistoryManager;
@@ -33,27 +23,27 @@ public class App {
     private Book[] books;
     private Reader[] readers;
     private History[] history;
-    private String booksFileName = "MyBooks";
-    private String readersFileName = "MyReaders";
-    private String historyFileName = "MyHistory";
     BookManager bookManager;
     ReaderManager readerManager;
     HistoryManager historyManager;
     DataManager dataManager = new DataManager();
+    private String booksFileName = "files/MyBooks";
+    private String readersFileName = "files/MyReaders";
+    private String historyFileName = "files/MyHistory";
     private String imput;
     private int n, m;
 
     public App() {
         scanner = new Scanner(System.in);
+        bookManager = new BookManager();
+        readerManager = new ReaderManager();
+        historyManager = new HistoryManager();
         books = (Book[]) dataManager.loadObjects(booksFileName);
         readers = (Reader[]) dataManager.loadObjects(readersFileName);
         history = (History[]) dataManager.loadObjects(historyFileName);
 //        books = new Book[0];
 //        readers = new Reader[0];
 //        history = new History[0];
-        bookManager = new BookManager();
-        readerManager = new ReaderManager();
-        historyManager = new HistoryManager();
 //        this.testAddBook();
 //        this.testAddReader();
     }

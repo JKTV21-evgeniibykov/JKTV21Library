@@ -25,6 +25,7 @@ public class DataManager {
             FileOutputStream fileOutputStream = new FileOutputStream(fileName);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
             objectOutputStream.writeObject(objects);
+            objectOutputStream.flush();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(DataManager.class.getName()).log(Level.SEVERE, "error no file", ex);
         } catch (IOException ex) {
