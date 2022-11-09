@@ -3,8 +3,9 @@ import entity.Book;
 import entity.History;
 import entity.Reader;
 import java.util.Scanner;
+import managers.BaseManager;
 import managers.BookManager;
-import managers.DataManager;
+//import managers.DataManager;
 import managers.HistoryManager;
 import managers.ReaderManager;
 
@@ -26,10 +27,11 @@ public class App {
     BookManager bookManager;
     ReaderManager readerManager;
     HistoryManager historyManager;
-    DataManager dataManager = new DataManager();
-    private String booksFileName = "files/MyBooks";
-    private String readersFileName = "files/MyReaders";
-    private String historyFileName = "files/MyHistory";
+    BaseManager baseManager = new BaseManager();
+//    DataManager dataManager = new DataManager();
+//    private String booksFileName = "files/MyBooks";
+//    private String readersFileName = "files/MyReaders";
+//    private String historyFileName = "files/MyHistory";
     private String imput;
     private int n, m;
 
@@ -38,12 +40,12 @@ public class App {
         bookManager = new BookManager();
         readerManager = new ReaderManager();
         historyManager = new HistoryManager();
-        books = (Book[]) dataManager.loadObjects(booksFileName);
-        readers = (Reader[]) dataManager.loadObjects(readersFileName);
-        history = (History[]) dataManager.loadObjects(historyFileName);
-//        books = new Book[0];
-//        readers = new Reader[0];
-//        history = new History[0];
+//        books = (Book[]) dataManager.loadObjects(booksFileName);
+//        readers = (Reader[]) dataManager.loadObjects(readersFileName);
+//        history = (History[]) dataManager.loadObjects(historyFileName);
+        books = new Book[0];
+        readers = new Reader[0];
+        history = new History[0];
 //        this.testAddBook();
 //        this.testAddReader();
     }
@@ -64,27 +66,28 @@ public class App {
                     break;
                 case "2": // add book
                     books = bookManager.addBook(books);
-                    dataManager.saveObjects((Book[]) books, booksFileName);
+                    baseManager.saveBooks(books);
+//                    dataManager.saveObjects((Book[]) books, booksFileName);
                     break;
                 case "3": // delete book
                     books = bookManager.removeBook(books);
-                    dataManager.saveObjects((Book[]) books, booksFileName);
+//                    dataManager.saveObjects((Book[]) books, booksFileName);
                     break;
                 case "4": // edit book
                     books = bookManager.editBook(books);
-                    dataManager.saveObjects((Book[]) books, booksFileName);
+//                    dataManager.saveObjects((Book[]) books, booksFileName);
                     break;
                 case "5": // add reader
                     readers = readerManager.addReader(readers);
-                    dataManager.saveObjects((Reader[]) readers, readersFileName);
+//                    dataManager.saveObjects((Reader[]) readers, readersFileName);
                     break;
                 case "6": // take book
                     history = historyManager.takeBook(history, books, readers);
-                    dataManager.saveObjects((History[]) history, historyFileName);
+//                    dataManager.saveObjects((History[]) history, historyFileName);
                     break;
                 case "7": // return book
                     history = historyManager.returnBook(history);
-                    dataManager.saveObjects((History[]) history, historyFileName);
+//                    dataManager.saveObjects((History[]) history, historyFileName);
                     break;
                 default:
             }

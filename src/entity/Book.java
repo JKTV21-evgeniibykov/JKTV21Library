@@ -7,14 +7,22 @@ package entity;
 
 import java.io.Serializable;
 import java.util.Arrays;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  *
  * @author pupil
  */
 
+@Entity
 public class Book implements Serializable {
     
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String title;
     private Author[] authors = new Author[0];
 
@@ -26,16 +34,24 @@ public class Book implements Serializable {
         this.authors = authors;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public void setTitle(String title) {
         this.title = title;
     }
 
-    public void setAuthors(Author[] authors) {
-        this.authors = authors;
-    }
-
     public String getTitle() {
         return title;
+    }
+
+    public void setAuthors(Author[] authors) {
+        this.authors = authors;
     }
 
     public Author[] getAuthors() {
