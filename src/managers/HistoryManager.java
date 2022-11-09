@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package managers;
 
 import entity.Book;
@@ -12,10 +7,6 @@ import java.util.Arrays;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
 
-/**
- *
- * @author pupil
- */
 public class HistoryManager {
     private final Scanner scanner;
     private String imput;

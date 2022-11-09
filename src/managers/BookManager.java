@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package managers;
 
 import entity.Author;
@@ -10,10 +5,6 @@ import entity.Book;
 import java.util.Arrays;
 import java.util.Scanner;
 
-/**
- *
- * @author pupil
- */
 public class BookManager {
     private final Scanner scanner;
     private String imput;
@@ -44,37 +35,37 @@ public class BookManager {
     
     public Book[] editBook(Book[] books) {
         System.out.println("\nedit book");
-         System.out.print("book #: ");
-         imput = scanner.nextLine();
-         n = Integer.parseInt(imput)-1;
-         Book oldBook = books[n];
-         Book chBook = new Book();
-         System.out.print("title [name(" + oldBook.getTitle() + ")]: ");
-         imput = scanner.nextLine();
-         if (!imput.equals("")) {
-             chBook.setTitle(imput);
-         } else {
-             chBook.setTitle(oldBook.getTitle());
-         }
-         m = 0;
-         do {
-             System.out.print("author [name");
-             if (m < oldBook.getAuthors().length) {
-                  System.out.print("(" + oldBook.getAuthors()[m].getName() + ")");
-             }
-             System.out.print(" / -]: ");
-             imput = scanner.nextLine();
-             if (!imput.equals("-")) {
-                 if (imput.equals("") && (m < oldBook.getAuthors().length)) {
-                     chBook.addAuthor(createAuthor(oldBook.getAuthors()[m].getName()));
-                 } else {
-                     chBook.addAuthor(createAuthor(imput));
-                 }
-             }
-             ++m;
-         } while (!imput.equals("-"));
-         System.out.println(chBook.toString() + "\n");
-         books[n] = chBook;        
+        System.out.print("book #: ");
+        imput = scanner.nextLine();
+        n = Integer.parseInt(imput)-1;
+        Book oldBook = books[n];
+        Book chBook = new Book();
+        System.out.print("title [name(" + oldBook.getTitle() + ")]: ");
+        imput = scanner.nextLine();
+        if (!imput.equals("")) {
+            chBook.setTitle(imput);
+        } else {
+            chBook.setTitle(oldBook.getTitle());
+        }
+        m = 0;
+        do {
+            System.out.print("author [name");
+            if (m < oldBook.getAuthors().length) {
+                 System.out.print("(" + oldBook.getAuthors()[m].getName() + ")");
+            }
+            System.out.print(" / -]: ");
+            imput = scanner.nextLine();
+            if (!imput.equals("-")) {
+                if (imput.equals("") && (m < oldBook.getAuthors().length)) {
+                    chBook.addAuthor(createAuthor(oldBook.getAuthors()[m].getName()));
+                } else {
+                    chBook.addAuthor(createAuthor(imput));
+                }
+            }
+            ++m;
+        } while (!imput.equals("-"));
+        System.out.println(chBook.toString() + "\n");
+        books[n] = chBook;        
         return books;
     }
     
